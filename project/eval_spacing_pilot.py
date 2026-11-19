@@ -25,14 +25,14 @@ FIELDS = ['label', 'group', 'train_seed', 'checkpoint', 'condition', 'mode', 'ep
           'pipes_cleared', 'steps', 'episode_return', 'terminated', 'truncated']
 
 
-def episode(model, make, seed, deterministic):
+def episode(model, make, seed, deterministic, cap=CAP):
     if not deterministic:
         torch.manual_seed(seed)
-    e = gym.wrappers.TimeLimit(make(), max_episode_steps=CAP)
+    e = gym.wrappers.TimeLimit(make(), max_episode_steps=cap)
     env = e.unwrapped
     obs, _ = e.reset(seed=seed)
     cleared, ret = 0, 0.
-    for step in range(1, CAP + 1):
+    for step in range(1, cap + 1):
         before = [p['x'] for p in env._upper_pipes]
         action, _ = model.predict(obs, deterministic=deterministic)
         obs, r, t, tr, info = e.step(action)

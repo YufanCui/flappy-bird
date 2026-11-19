@@ -17,7 +17,8 @@ def main(run, filt=''):
     per = defaultdict(list)
     for r in rows:
         group = r['label'].rsplit('_seed', 1)[0]
-        per[(group, r['checkpoint'], r['condition'], r['mode'], r['train_seed'])].append(r)
+        cond = r['condition'] + ('' if r.get('cap', '10000') in ('', '10000') else f"@cap{r['cap']}")
+        per[(group, r['checkpoint'], cond, r['mode'], r['train_seed'])].append(r)
     agg = defaultdict(list)
     for (g, ck, c, m, s), rs in per.items():
         cl = [int(x['pipes_cleared']) for x in rs]
