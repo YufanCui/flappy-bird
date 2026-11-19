@@ -44,3 +44,16 @@ class OriginalGameEnv(_OriginalProximity, FlappyBirdEnv):
 
 class OriginalRewardSpacingEnv(_OriginalProximity, RandomSpacingEnv):
     pass
+
+
+# --- v3 main environment (2026-11-18): random vertical gap size, original spacing pattern, original reward.
+from random_gap_env import RandomGapEnv  # noqa: E402
+
+
+class OriginalRewardGapEnv(_OriginalProximity, RandomGapEnv):
+    """Teacher's requirement: gap between upper and lower pipe is random (per new pair).
+
+    Horizontal spacing keeps the original 144/144/164 pattern; centers keep the original distribution;
+    reward is the original 0.4.0 reward (proximity -0.5). gap_range=(100,100) reproduces the original game.
+    """
+    pass

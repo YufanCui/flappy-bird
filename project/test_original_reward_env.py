@@ -56,5 +56,22 @@ class OriginalRewardTests(unittest.TestCase):
         self.assertGreater(respawns, 20)
 
 
+    def test_main_gap_env_fixed100_matches_original_file(self):
+        from original_reward_env import OriginalRewardGapEnv
+        steps = 0
+        for seed in range(20):
+            a, b = OriginalRewardGapEnv((100, 100)), OriginalFile()
+            oa, _ = a.reset(seed=seed); ob, _ = b.reset(seed=seed)
+            np.testing.assert_array_equal(oa, ob)
+            for t in range(3000):
+                act = policy(a)
+                xa, xb = a.step(act), b.step(act)
+                np.testing.assert_array_equal(xa[0], xb[0]); self.assertEqual(xa[1:], xb[1:])
+                steps += 1
+                if xa[2]:
+                    break
+        self.assertGreater(steps, 10000)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
