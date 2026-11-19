@@ -1,0 +1,56 @@
+{
+  "episodes": 360,
+  "steps": 27567,
+  "passages": 186,
+  "failure_taxonomy": {
+    "later_pipe_lower": 35,
+    "first_pipe_lower": 83,
+    "later_pipe_upper": 63,
+    "first_pipe_upper": 179
+  },
+  "passages_by_gap": {
+    "fixed100": {
+      "n": 91,
+      "mean_prox_pipe_steps": 3.5494505494505493,
+      "pct_zero_prox": 0.0,
+      "mean_passage_steps": 55.18681318681319
+    },
+    "100": {
+      "n": 18,
+      "mean_prox_pipe_steps": 3.0,
+      "pct_zero_prox": 0.0,
+      "mean_passage_steps": 48.611111111111114
+    },
+    "110": {
+      "n": 31,
+      "mean_prox_pipe_steps": 1.8387096774193548,
+      "pct_zero_prox": 16.129032258064516,
+      "mean_passage_steps": 59.38709677419355
+    },
+    "120": {
+      "n": 6,
+      "mean_prox_pipe_steps": 0.3333333333333333,
+      "pct_zero_prox": 66.66666666666666,
+      "mean_passage_steps": 70.0
+    },
+    "80": {
+      "n": 17,
+      "mean_prox_pipe_steps": 8.588235294117647,
+      "pct_zero_prox": 0.0,
+      "mean_passage_steps": 47.294117647058826
+    },
+    "90": {
+      "n": 23,
+      "mean_prox_pipe_steps": 4.565217391304348,
+      "pct_zero_prox": 0.0,
+      "mean_passage_steps": 51.47826086956522
+    }
+  },
+  "pooled_return_contribution": {
+    "alive": 2498.2,
+    "score": 264,
+    "proximity": -1961,
+    "above_screen": 0.0,
+    "crash": -360
+  }
+}

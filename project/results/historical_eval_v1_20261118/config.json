@@ -1,0 +1,31 @@
+{
+  "purpose": "historical_checkpoint_diagnostic_no_learning",
+  "condition": "fixed100 (original game geometry via RandomGapEnv((100,100)))",
+  "episode_seeds": [
+    220000,
+    220019
+  ],
+  "max_episode_steps": 3000,
+  "modes": [
+    "deterministic",
+    "stochastic(torch.manual_seed(episode_seed))"
+  ],
+  "models": {
+    "flappy_model": {
+      "sha256": "370ecbaf057c22c0e87cb3d183354737e4be1f44297355aad8dd28be2eb5cb28",
+      "num_timesteps": 100352
+    },
+    "flappy_model_300k": {
+      "sha256": "c1e7e1020ef4de75a22b8a3418cc3403bd6281c1ff8f84f717f4d837263e7ba1",
+      "num_timesteps": 301056
+    },
+    "flappy_model_top_penalty_300k": {
+      "sha256": "f02f7ac51020fbad23593ee5c95f794ccea697075fa354d29d5a6a381a7888fe",
+      "num_timesteps": 301056
+    },
+    "flappy_model_obstacle_penalty_300k": {
+      "sha256": "5406954fbe008e8ca47bf502dfa479327202648f5418fccea73e375f91e0dc11",
+      "num_timesteps": 301056
+    }
+  }
+}

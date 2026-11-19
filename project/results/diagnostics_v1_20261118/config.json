@@ -1,0 +1,47 @@
+{
+  "purpose": "development_diagnostic_v1_no_learning",
+  "deterministic": true,
+  "episode_seeds": [
+    220000,
+    220019
+  ],
+  "episodes_per_condition": 20,
+  "conditions": {
+    "fixed100": [
+      100,
+      100
+    ],
+    "random80_120": [
+      80,
+      120
+    ]
+  },
+  "max_episode_steps": 3000,
+  "learning_updates": 0,
+  "panel_note": "New development panel; does not use proposed validation 200000-200099 or final 300000-300099.",
+  "models": {
+    "fixed100_seed0": "3165644bcc8284bbf3a071ca6b4eb3b362d2dccb385c7f8555d1f81b579b78c5",
+    "fixed100_seed1": "16e548cada6b7d79c11bb0770040379eb069c18581a69b3b1586ab11aa4a3e70",
+    "fixed100_seed2": "23a6577b7b7b28c916a5ef83fefabd7f901f311115ad3d48499395bbc1ba1488",
+    "random90_110_seed0": "2ded6b972e4cc898312fb1381789af2634466c828602777426e0c99ca29d7dcc",
+    "random90_110_seed1": "2e8cfd691ced7a3503fdcb1a81ac0ae2eb8a46b0e378168ffc92a8fa66e200c1",
+    "random90_110_seed2": "dbd130be55bc872c8352557175d11828e3699baef3b2f49d45e8bd9699f67625",
+    "random80_120_seed0": "f8fb2f828c9b553fd99de90c5a9597f124d0a32f345f81034a6168600a6ba1bf",
+    "random80_120_seed1": "bae41d8398821ab99b2d25fb0135eefeb8b36da75df8ec7abe68b1306b291ed5",
+    "random80_120_seed2": "5d12ba89f12837401508541c34a01459e13db04b831a883f107f283684f44fde"
+  },
+  "source_sha256": {
+    "random_gap_env.py": "11dc7f8308ba2f02e6dd698a49eec4ca3b2eaf0c5e6582066fde62fc53f69c95",
+    "diagnose_policies_v1.py": "4e93481a8a819ca35e77550caea1588039ea517626e6f14a073777e00f63edcb"
+  },
+  "versions": {
+    "python": "3.11.15",
+    "sb3": "2.8.0",
+    "torch": "2.12.0",
+    "gymnasium": "1.2.3",
+    "numpy": "2.4.6",
+    "pygame": "2.6.1"
+  },
+  "private_zone_px": 32.0,
+  "lidar_max_px": 196
+}

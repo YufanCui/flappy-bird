@@ -1,0 +1,8 @@
+314c314
+<             reward = -1  # reward for dying
+---
+>             reward = -1  # penalty for dying
+539c539
+<             reward = -0.5
+---
+>             reward = -1  # penalty for being too close to an obstacle

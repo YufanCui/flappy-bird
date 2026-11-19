@@ -1,0 +1,27 @@
+{
+  "episodes": 160,
+  "steps": 119152,
+  "passages": 2903,
+  "failure_taxonomy": {
+    "later_pipe_upper": 76,
+    "later_pipe_lower": 65,
+    "truncated": 7,
+    "first_pipe_lower": 5,
+    "first_pipe_upper": 7
+  },
+  "passages_by_gap": {
+    "fixed100": {
+      "n": 2903,
+      "mean_prox_pipe_steps": 2.6148811574233553,
+      "pct_zero_prox": 3.8580778504994835,
+      "mean_passage_steps": 39.27419910437479
+    }
+  },
+  "pooled_return_contribution": {
+    "alive": 10788.4,
+    "score": 3018,
+    "proximity": -8053,
+    "above_screen": -22.0,
+    "crash": -153
+  }
+}
