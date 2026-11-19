@@ -1,0 +1,21 @@
+{
+  "label": "gap100_100_seed3",
+  "spec": "gap100_100",
+  "tag": "",
+  "seed": 3,
+  "requested_steps": 300000,
+  "actual_steps": 301056,
+  "ppo_overrides": {},
+  "train_episode_cap": 10000,
+  "reward": "original 0.4.0 unless spec has noprox",
+  "seconds": 688.3,
+  "sha256": "d5c543c3f61ac19711d67a8e3be7c07cda5c962bf0c868d5e3d5ae75b002ae9e",
+  "source_sha256": {
+    "random_spacing_env.py": "ac077f8533debe8e0a0f99280134754af58b35a3b83874d2f14a2f988dae96fd",
+    "random_gap_env.py": "11dc7f8308ba2f02e6dd698a49eec4ca3b2eaf0c5e6582066fde62fc53f69c95",
+    "env_v3.py": "c46a25d29866bcabce4fdcf96ec9d98a5f8858e1bad328ea4fc2eeffde3294c6",
+    "gap_spacing_env.py": "635ee97fdd91850da7a24c3305aea6bdb0b3b0ea331d79f89037b847d2b7808c",
+    "original_reward_env.py": "fb8d1cc7646de214b4229a43995f1b8f897ee48b1152725c671deb135cf887ad",
+    "train_v3.py": "ab43ae5a643aa13a3c9d0df1edc761841cd6272ef07230f31c0aa75f76dbe10f"
+  }
+}
