@@ -1,0 +1,23 @@
+{
+  "label": "gap80_120+sticky5+stack4_orig_seed0",
+  "spec": "gap80_120+sticky5+stack4",
+  "tag": "_orig",
+  "seed": 0,
+  "requested_steps": 3000000,
+  "actual_steps": 3000320,
+  "ppo_overrides": {},
+  "lr_linear": true,
+  "curriculum_fraction": 0.0,
+  "train_episode_cap": 10000,
+  "reward": "original 0.4.0 unless spec has noprox",
+  "seconds": 4482.9,
+  "sha256": "0f46362ab4f863b88a33f1bef1a58f35cfe320bb884cedf13cef96e8afdbba25",
+  "source_sha256": {
+    "random_spacing_env.py": "ac077f8533debe8e0a0f99280134754af58b35a3b83874d2f14a2f988dae96fd",
+    "random_gap_env.py": "11dc7f8308ba2f02e6dd698a49eec4ca3b2eaf0c5e6582066fde62fc53f69c95",
+    "env_v3.py": "7510b4f7e10e6f805586c8319778408e3cda20ff171aa12a43b818175406e7b9",
+    "gap_spacing_env.py": "635ee97fdd91850da7a24c3305aea6bdb0b3b0ea331d79f89037b847d2b7808c",
+    "original_reward_env.py": "fb8d1cc7646de214b4229a43995f1b8f897ee48b1152725c671deb135cf887ad",
+    "train_v3.py": "b899fafd429f4a224e9117502890590e642e355af36222385ba0c955f7083369"
+  }
+}

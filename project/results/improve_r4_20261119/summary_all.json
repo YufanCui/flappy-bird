@@ -1,0 +1,154 @@
+[
+  {
+    "group": "gap80_120+sticky5+stack4+topB_topB",
+    "checkpoint": "final",
+    "condition": "gap100_100+sticky5@cap40000",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 48.1,
+    "sd": 22.58,
+    "seed_means": [
+      30.1,
+      73.5,
+      40.7
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 268
+  },
+  {
+    "group": "gap80_120+sticky5+stack4+topB_topB",
+    "checkpoint": "final",
+    "condition": "gap100_100@cap40000",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 524.1,
+    "sd": 364.63,
+    "seed_means": [
+      201.9,
+      920.0,
+      450.4
+    ],
+    "perfect_rate": 0.3,
+    "best_episode": 1061
+  },
+  {
+    "group": "gap80_120+sticky5+stack4+topB_topB",
+    "checkpoint": "final",
+    "condition": "gap80_120+sticky5@cap40000",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 19.95,
+    "sd": 1.85,
+    "seed_means": [
+      21.8,
+      20.1,
+      18.1
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 104
+  },
+  {
+    "group": "gap80_120+sticky5+stack4+topB_topB",
+    "checkpoint": "final",
+    "condition": "gap80_120@cap40000",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 120.18,
+    "sd": 76.17,
+    "seed_means": [
+      43.0,
+      195.3,
+      122.2
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 719
+  },
+  {
+    "group": "gap80_120+sticky5+stack4_orig",
+    "checkpoint": "final",
+    "condition": "gap100_100+sticky5@cap40000",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 46.97,
+    "sd": 13.32,
+    "seed_means": [
+      61.4,
+      35.0,
+      44.5
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 198
+  },
+  {
+    "group": "gap80_120+sticky5+stack4_orig",
+    "checkpoint": "final",
+    "condition": "gap100_100@cap40000",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 771.18,
+    "sd": 247.29,
+    "seed_means": [
+      1055.7,
+      607.9,
+      650.0
+    ],
+    "perfect_rate": 0.483,
+    "best_episode": 1061
+  },
+  {
+    "group": "gap80_120+sticky5+stack4_orig",
+    "checkpoint": "final",
+    "condition": "gap80_120+sticky5@cap40000",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 20.07,
+    "sd": 1.6,
+    "seed_means": [
+      21.8,
+      18.6,
+      19.8
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 77
+  },
+  {
+    "group": "gap80_120+sticky5+stack4_orig",
+    "checkpoint": "final",
+    "condition": "gap80_120@cap40000",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 100.37,
+    "sd": 15.42,
+    "seed_means": [
+      113.3,
+      104.5,
+      83.3
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 376
+  }
+]
