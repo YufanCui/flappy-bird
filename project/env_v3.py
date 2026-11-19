@@ -10,6 +10,8 @@ Agent/training parts (what the agent sees / is rewarded for):
   stack4     stack last 4 LiDAR observations (velocity information)
   features   vendor 12-dim feature observation (privileged; has no proximity penalty by vendor design)
   noprox     remove the proximity penalty (reward change only)
+  prevact    append the previously EXECUTED action (0/1) to the LiDAR observation (added 2026-11-19). Under sticky
+             actions this is what the next step may repeat. Information a human player also has (they saw the bird).
   topB       June Experiment B reward: above-screen penalty -0.5 -> -2 (crash penalty -1 still overrides it).
              Re-implemented from the documented change; the original June Exp B code was not recovered.
 Default reward: original flappy-bird-gymnasium 0.4.0 (proximity -0.5). Vendor files are never modified.
@@ -22,7 +24,7 @@ from gap_spacing_env import GapSpacingEnv
 from flappy_bird_gymnasium import FlappyBirdEnv
 
 RANDOMNESS = ('gap', 'sp', 'sticky')
-AGENT = ('stack4', 'features', 'noprox', 'topB')
+AGENT = ('stack4', 'features', 'noprox', 'topB', 'prevact')
 
 
 class _NoProximity:
@@ -66,6 +68,23 @@ class TopPenaltyB(gym.Wrapper):
         return obs, r, t, tr, info
 
 
+class PrevAction(gym.Wrapper):
+    """Observation = [LiDAR..., previously executed action]. Uses info['executed_action'] when sticky is active."""
+    def __init__(self, env):
+        super().__init__(env)
+        lo, hi = env.observation_space.low, env.observation_space.high
+        self.observation_space = gym.spaces.Box(np.append(lo, 0.0).astype(np.float64), np.append(hi, 1.0).astype(np.float64),
+                                                dtype=np.float64)
+
+    def reset(self, *, seed=None, options=None):
+        obs, info = self.env.reset(seed=seed, options=options)
+        return np.append(obs, 0.0), info
+
+    def step(self, action):
+        obs, r, t, tr, info = self.env.step(action)
+        return np.append(obs, float(info.get('executed_action', int(action)))), r, t, tr, info
+
+
 def _rng(part, prefix):
     a, b = part[len(prefix):].split('_')
     return int(a), int(b)
@@ -73,7 +92,7 @@ def _rng(part, prefix):
 
 def parse(spec):
     parts = spec.split('+')
-    out = dict(gap=(100, 100), sp=None, sticky=0.0, stack4=False, features=False, noprox=False, topB=False)
+    out = dict(gap=(100, 100), sp=None, sticky=0.0, stack4=False, features=False, noprox=False, topB=False, prevact=False)
     for p in parts:
         if p.startswith('gap'): out['gap'] = _rng(p, 'gap')
         elif p.startswith('sticky'): out['sticky'] = int(p[len('sticky'):]) / 100
@@ -111,6 +130,8 @@ def make(spec):
         env = TopPenaltyB(env)
     if s['sticky'] > 0:
         env = StickyActions(env, s['sticky'])
+    if s['prevact']:
+        env = PrevAction(env)
     if s['stack4']:
         env = gym.wrappers.FrameStackObservation(env, 4)
     return env

@@ -76,6 +76,19 @@ def test_topB():
     assert above > 5
 
 
+def test_prevact():
+    env = env_v3.make('gap80_120+sticky25+prevact'); obs, _ = env.reset(seed=4)
+    assert obs.shape == (181,) and obs[-1] == 0.0
+    for i in range(60):
+        obs, _, t, tr, info = env.step(i % 2)
+        assert obs[-1] == info['executed_action']
+        assert env.observation_space.contains(obs)
+        if t or tr:
+            break
+    st = env_v3.make('gap80_120+sticky5+prevact+stack4'); o, _ = st.reset(seed=1)
+    assert o.shape == (4, 181)
+
+
 if __name__ == '__main__':
     for name, f in list(globals().items()):
         if name.startswith('test_'):
