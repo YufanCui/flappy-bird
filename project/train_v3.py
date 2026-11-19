@@ -21,6 +21,25 @@ SOURCES = ['train_v3.py', 'env_v3.py', 'original_reward_env.py', 'random_gap_env
            'random_spacing_env.py']
 
 
+class GapCurriculum(BaseCallback):
+    """Curriculum on the training gap range only: starts at (hi,hi) (widest fixed gap, easiest) and lowers
+    the lower bound linearly to the target lo over `span` steps; then stays at the target (lo,hi).
+    The new range applies to pipes generated after the change. Evaluation is always on the target task."""
+    def __init__(self, env, span, out, label):
+        super().__init__(); self.env, self.span, self.out, self.label = env, span, out, label
+        self.lo, self.hi = env.gap_range; self.last = None
+
+    def _on_step(self):
+        frac = min(1.0, self.num_timesteps / self.span)
+        lo = int(round(self.hi - (self.hi - self.lo) * frac))
+        if lo != self.last:
+            self.env.gap_range = (lo, self.hi); self.last = lo
+            if lo % 10 == 0:
+                with (self.out / 'curriculum.jsonl').open('a') as f:
+                    f.write(json.dumps(dict(model=self.label, timesteps=self.num_timesteps, gap_range=[lo, self.hi])) + '\n')
+        return True
+
+
 class Checkpoints(BaseCallback):
     def __init__(self, out, label, every):
         super().__init__(); self.out, self.label, self.every, self.next = out, label, every, every
@@ -50,6 +69,9 @@ def main():
     p.add_argument('--ckpt-every', type=int, default=50000)
     p.add_argument('--ppo', default='{}', help='JSON dict of PPO kwargs overriding SB3 defaults')
     p.add_argument('--tag', default='')
+    p.add_argument('--lr-linear', action='store_true', help='linearly decay learning rate from 3e-4 to 0')
+    p.add_argument('--curriculum', type=float, default=0.0,
+                   help='fraction of training over which the gap range widens from (hi,hi) to (lo,hi); 0 = off')
     a = p.parse_args()
     env_v3.parse(a.spec)
     label = f'{a.spec}{a.tag}_seed{a.seed}'
@@ -67,12 +89,19 @@ def main():
         ppo['policy_kwargs']['net_arch'] = ppo['policy_kwargs']['net_arch']
     env = Monitor(gym.wrappers.TimeLimit(env_v3.make(a.spec), max_episode_steps=CAP),
                   filename=str(a.out / f'{label}.monitor.csv'), info_keywords=('score',))
+    if a.lr_linear:
+        lr0 = ppo.pop('learning_rate', 3e-4)
+        ppo['learning_rate'] = lambda progress_remaining: lr0 * progress_remaining
     model = PPO('MlpPolicy', env, seed=a.seed, device='cpu', verbose=0, **ppo)
+    callbacks = [Checkpoints(a.out, label, a.ckpt_every)]
+    if a.curriculum > 0:
+        callbacks.append(GapCurriculum(env.unwrapped, a.steps * a.curriculum, a.out, label))
     t0 = time.monotonic()
-    model.learn(total_timesteps=a.steps, callback=Checkpoints(a.out, label, a.ckpt_every))
+    model.learn(total_timesteps=a.steps, callback=callbacks)
     model.save(final); env.close()
     (a.out / f'{label}.json').write_text(json.dumps(dict(label=label, spec=a.spec, tag=a.tag, seed=a.seed,
         requested_steps=a.steps, actual_steps=int(model.num_timesteps), ppo_overrides=json.loads(a.ppo),
+        lr_linear=a.lr_linear, curriculum_fraction=a.curriculum,
         train_episode_cap=CAP, reward='original 0.4.0 unless spec has noprox', seconds=round(time.monotonic() - t0, 1),
         sha256=hashlib.sha256(final.read_bytes()).hexdigest(),
         source_sha256={f.name: hashlib.sha256(f.read_bytes()).hexdigest() for f in src.iterdir()}), indent=2) + '\n')

@@ -1,0 +1,15 @@
+_3M 0
+_3M 1
+_3M 2
+_lr 0
+_cur 0
+_ent 0
+_big 0
+_lr 1
+_cur 1
+_ent 1
+_big 1
+_lr 2
+_cur 2
+_ent 2
+_big 2
