@@ -1,0 +1,9 @@
+_lr3M 0
+_lr3M 1
+_lr3M 2
+_lr 3
+_lr 4
+_lr 5
+_base 3
+_base 4
+_base 5
