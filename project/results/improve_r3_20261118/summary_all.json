@@ -1,0 +1,230 @@
+[
+  {
+    "group": "gap80_120+stack4_base",
+    "checkpoint": "final",
+    "condition": "gap100_100",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 31.13,
+    "sd": 4.63,
+    "seed_means": [
+      27.4,
+      29.8,
+      36.3
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 82
+  },
+  {
+    "group": "gap80_120+stack4_base",
+    "checkpoint": "final",
+    "condition": "gap121_140",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 131.25,
+    "sd": 75.9,
+    "seed_means": [
+      215.4,
+      68.1,
+      110.2
+    ],
+    "perfect_rate": 0.15,
+    "best_episode": 264
+  },
+  {
+    "group": "gap80_120+stack4_base",
+    "checkpoint": "final",
+    "condition": "gap60_79",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 0.27,
+    "sd": 0.13,
+    "seed_means": [
+      0.4,
+      0.2,
+      0.1
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 2
+  },
+  {
+    "group": "gap80_120+stack4_base",
+    "checkpoint": "final",
+    "condition": "gap80_120",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 16.33,
+    "sd": 2.15,
+    "seed_means": [
+      18.6,
+      15.9,
+      14.4
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 55
+  },
+  {
+    "group": "gap80_120+stack4_lr",
+    "checkpoint": "final",
+    "condition": "gap100_100",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 229.83,
+    "sd": 31.95,
+    "seed_means": [
+      250.0,
+      246.5,
+      193.0
+    ],
+    "perfect_rate": 0.783,
+    "best_episode": 264
+  },
+  {
+    "group": "gap80_120+stack4_lr",
+    "checkpoint": "final",
+    "condition": "gap121_140",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 128.1,
+    "sd": 92.23,
+    "seed_means": [
+      127.8,
+      220.5,
+      36.0
+    ],
+    "perfect_rate": 0.3,
+    "best_episode": 264
+  },
+  {
+    "group": "gap80_120+stack4_lr",
+    "checkpoint": "final",
+    "condition": "gap60_79",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 0.38,
+    "sd": 0.13,
+    "seed_means": [
+      0.2,
+      0.5,
+      0.4
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 2
+  },
+  {
+    "group": "gap80_120+stack4_lr",
+    "checkpoint": "final",
+    "condition": "gap80_120",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 71.87,
+    "sd": 5.53,
+    "seed_means": [
+      73.5,
+      76.4,
+      65.7
+    ],
+    "perfect_rate": 0.05,
+    "best_episode": 264
+  },
+  {
+    "group": "gap80_120+stack4_lr3M",
+    "checkpoint": "final",
+    "condition": "gap100_100",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 225.38,
+    "sd": 13.13,
+    "seed_means": [
+      236.5,
+      210.9,
+      228.8
+    ],
+    "perfect_rate": 0.733,
+    "best_episode": 264
+  },
+  {
+    "group": "gap80_120+stack4_lr3M",
+    "checkpoint": "final",
+    "condition": "gap121_140",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 202.48,
+    "sd": 74.32,
+    "seed_means": [
+      250.7,
+      116.9,
+      239.8
+    ],
+    "perfect_rate": 0.6,
+    "best_episode": 264
+  },
+  {
+    "group": "gap80_120+stack4_lr3M",
+    "checkpoint": "final",
+    "condition": "gap60_79",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 0.47,
+    "sd": 0.23,
+    "seed_means": [
+      0.5,
+      0.7,
+      0.2
+    ],
+    "perfect_rate": 0.0,
+    "best_episode": 3
+  },
+  {
+    "group": "gap80_120+stack4_lr3M",
+    "checkpoint": "final",
+    "condition": "gap80_120",
+    "mode": "deterministic",
+    "n_seeds": 3,
+    "episodes_per_seed": [
+      20
+    ],
+    "mean": 92.12,
+    "sd": 21.16,
+    "seed_means": [
+      96.2,
+      110.9,
+      69.2
+    ],
+    "perfect_rate": 0.083,
+    "best_episode": 264
+  }
+]
