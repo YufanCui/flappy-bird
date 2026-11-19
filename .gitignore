@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+meeting/
+
+# large run artifacts (models, checkpoints, logs, source snapshots)
+project/results/**/*.zip
+project/results/**/checkpoints/
+project/results/**/*.monitor.csv
+project/results/**/logs/
+project/results/**/source/
