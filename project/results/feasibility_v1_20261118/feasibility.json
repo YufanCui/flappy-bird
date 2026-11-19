@@ -1,0 +1,125 @@
+{
+  "note": "Minimum proximity steps to clear first pipe, exact over pruned (best+3) state set.",
+  "rows": [
+    {
+      "gap": 80,
+      "seed": 220000,
+      "min_proximity_steps": 6,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 49
+    },
+    {
+      "gap": 80,
+      "seed": 220001,
+      "min_proximity_steps": 6,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 49
+    },
+    {
+      "gap": 80,
+      "seed": 220002,
+      "min_proximity_steps": 6,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 49
+    },
+    {
+      "gap": 90,
+      "seed": 220000,
+      "min_proximity_steps": 3,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 270
+    },
+    {
+      "gap": 90,
+      "seed": 220001,
+      "min_proximity_steps": 3,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 270
+    },
+    {
+      "gap": 90,
+      "seed": 220002,
+      "min_proximity_steps": 3,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 270
+    },
+    {
+      "gap": 100,
+      "seed": 220000,
+      "min_proximity_steps": 1,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 623
+    },
+    {
+      "gap": 100,
+      "seed": 220001,
+      "min_proximity_steps": 1,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 623
+    },
+    {
+      "gap": 100,
+      "seed": 220002,
+      "min_proximity_steps": 1,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 623
+    },
+    {
+      "gap": 110,
+      "seed": 220000,
+      "min_proximity_steps": 0,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 852
+    },
+    {
+      "gap": 110,
+      "seed": 220001,
+      "min_proximity_steps": 0,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 852
+    },
+    {
+      "gap": 110,
+      "seed": 220002,
+      "min_proximity_steps": 0,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 852
+    },
+    {
+      "gap": 120,
+      "seed": 220000,
+      "min_proximity_steps": 0,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 1066
+    },
+    {
+      "gap": 120,
+      "seed": 220001,
+      "min_proximity_steps": 0,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 1066
+    },
+    {
+      "gap": 120,
+      "seed": 220002,
+      "min_proximity_steps": 0,
+      "steps": 71,
+      "cleared": true,
+      "states_last": 1066
+    }
+  ]
+}

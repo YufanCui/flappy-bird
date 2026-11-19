@@ -1,0 +1,19 @@
+{
+  "note": "Exact survival reachability through two pipes with extreme center change (70 px), gap 100.",
+  "rows": [
+    {
+      "spacing": 115,
+      "center_from": 220,
+      "center_to": 150,
+      "feasible": true,
+      "steps": 100
+    },
+    {
+      "spacing": 115,
+      "center_from": 150,
+      "center_to": 220,
+      "feasible": true,
+      "steps": 100
+    }
+  ]
+}
