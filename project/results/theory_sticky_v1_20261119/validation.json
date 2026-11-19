@@ -1,0 +1,8 @@
+{
+  "trajectory_and_alive_mismatches": 0,
+  "trajectory_checks": 1480,
+  "crash_mask_mismatches": 0,
+  "p0_survival_full_horizon": {
+    "15": 1.0
+  }
+}

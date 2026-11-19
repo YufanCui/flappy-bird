@@ -1,0 +1,221 @@
+{
+  "note": "Theoretical upper bound on performance under sticky actions (2026-11-19).\n\nQuestion: with sticky actions (probability p the previous executed action is repeated), how far can ANY policy fly?\n\nMethod (exact dynamic programming, no learning):\n- For a given episode seed, the pipe sequence does not depend on the bird's actions (pipes move 4 px/step and\n  respawn with heights from the env's own RNG streams). We record the exact pipe rectangles for every step by\n  stepping the real env (env_v3.make(spec_without_sticky)).\n- Bird state before a step = (y, vel_y, previously executed action). Dynamics and collision copy the vendor code\n  (flap only if y > -2*PLAYER_HEIGHT; gravity +1 up to 10 when not flapping; y += min(vel, ground - y - h);\n  pygame.Rect integer truncation; ground crash if y + h >= ground_y - 1). Rotation does not affect collision.\n- The \"clairvoyant\" optimal policy knows the whole future pipe sequence (more information than the agent, whose\n  LiDAR cannot see pipes before they are generated) but not the future sticky coin flips. Backward induction gives\n  S_k = max probability of clearing at least k pipes. Hence for ANY policy, P(pipes >= k) <= S_k and\n  E[pipes] <= sum_k S_k. This is an UPPER BOUND, not an achievable target.\n- Validation (--validate): (1) the vectorized crash test equals env._check_crash on sampled states; (2) with p=0 the\n  DP survival probability over the full horizon is 1 (consistent with the earlier exact feasibility search); (3) the simulator's bird trajectory equals\n  the real env's for random action sequences.\n\n",
+  "summary": [
+    {
+      "gap": "gap80_120",
+      "p": 0.0,
+      "mean_S": {
+        "1": 1.0,
+        "2": 1.0,
+        "5": 1.0,
+        "10": 1.0,
+        "20": 1.0,
+        "50": 1.0,
+        "100": 1.0,
+        "200": 1.0,
+        "500": 1.0
+      },
+      "hazard_per_pipe_from_SK": 0.0,
+      "implied_mean_pipes_if_constant_hazard": null,
+      "upper_bound_E_pipes_up_to_K": 500.0
+    },
+    {
+      "gap": "gap80_120",
+      "p": 0.01,
+      "mean_S": {
+        "1": 0.9999836009336365,
+        "2": 0.9999473519809714,
+        "5": 0.9998496452332682,
+        "10": 0.9997165127374613,
+        "20": 0.9994284942994935,
+        "50": 0.9984005423324674,
+        "100": 0.9966173436969676,
+        "200": 0.9924967864425863,
+        "500": 0.9821844906273947
+      },
+      "hazard_per_pipe_from_SK": 3.5951585614535375e-05,
+      "implied_mean_pipes_if_constant_hazard": 27815.184863381823,
+      "upper_bound_E_pipes_up_to_K": 497.30989125849834
+    },
+    {
+      "gap": "gap80_120",
+      "p": 0.02,
+      "mean_S": {
+        "1": 0.9999288135336852,
+        "2": 0.9997784473782018,
+        "5": 0.9993568026409246,
+        "10": 0.9987897707550883,
+        "20": 0.9975448170859618,
+        "50": 0.9931660275281601,
+        "100": 0.9855788392041755,
+        "200": 0.9694090407613176,
+        "500": 0.9270401506384504
+      },
+      "hazard_per_pipe_from_SK": 0.00015150532572305586,
+      "implied_mean_pipes_if_constant_hazard": 6600.42803926213,
+      "upper_bound_E_pipes_up_to_K": 488.9491879142235
+    },
+    {
+      "gap": "gap80_120",
+      "p": 0.05,
+      "mean_S": {
+        "1": 0.999450295229865,
+        "2": 0.998397430015007,
+        "5": 0.9951899320809081,
+        "10": 0.9909531486017759,
+        "20": 0.981458048534361,
+        "50": 0.9496219144096993,
+        "100": 0.8963072246553807,
+        "200": 0.7963260489561755,
+        "500": 0.5692240131283506
+      },
+      "hazard_per_pipe_from_SK": 0.0011263276685978818,
+      "implied_mean_pipes_if_constant_hazard": 887.8411033308435,
+      "upper_bound_E_pipes_up_to_K": 425.3334980606037
+    },
+    {
+      "gap": "gap80_120",
+      "p": 0.1,
+      "mean_S": {
+        "1": 0.9970961495673347,
+        "2": 0.9920161298879411,
+        "5": 0.9755918322070061,
+        "10": 0.9540636224859144,
+        "20": 0.9066049754805734,
+        "50": 0.7656501748006748,
+        "100": 0.568949863018998,
+        "200": 0.31419403502131293,
+        "500": 0.0558603870812602
+      },
+      "hazard_per_pipe_from_SK": 0.005753186251626463,
+      "implied_mean_pipes_if_constant_hazard": 173.81672629098242,
+      "upper_bound_E_pipes_up_to_K": 236.02559473786994
+    },
+    {
+      "gap": "gap80_120",
+      "p": 0.25,
+      "mean_S": {
+        "1": 0.9681315417069871,
+        "2": 0.920091506078845,
+        "5": 0.7766997016494266,
+        "10": 0.6115338217712247,
+        "20": 0.35431326216244313,
+        "50": 0.06348258427588081,
+        "100": 0.003039671819334689,
+        "200": 7.793782594378854e-06,
+        "500": 1.4641318935984033e-13
+      },
+      "hazard_per_pipe_from_SK": 0.05739191520959275,
+      "implied_mean_pipes_if_constant_hazard": 17.424056966003732,
+      "upper_bound_E_pipes_up_to_K": 28.837075181282017
+    },
+    {
+      "gap": "gap100_100",
+      "p": 0.0,
+      "mean_S": {
+        "1": 1.0,
+        "2": 1.0,
+        "5": 1.0,
+        "10": 1.0,
+        "20": 1.0,
+        "50": 1.0,
+        "100": 1.0,
+        "200": 1.0,
+        "500": 1.0
+      },
+      "hazard_per_pipe_from_SK": 0.0,
+      "implied_mean_pipes_if_constant_hazard": null,
+      "upper_bound_E_pipes_up_to_K": 500.0
+    },
+    {
+      "gap": "gap100_100",
+      "p": 0.01,
+      "mean_S": {
+        "1": 0.9999999604894525,
+        "2": 0.9999986591283869,
+        "5": 0.9999936719027641,
+        "10": 0.9999850725119014,
+        "20": 0.999965973675596,
+        "50": 0.9999118793673747,
+        "100": 0.9998161035656443,
+        "200": 0.9996317855383611,
+        "500": 0.9990749418115439
+      },
+      "hazard_per_pipe_from_SK": 1.8509709246439243e-06,
+      "implied_mean_pipes_if_constant_hazard": 540257.0006292089,
+      "upper_bound_E_pipes_up_to_K": 499.8655342192168
+    },
+    {
+      "gap": "gap100_100",
+      "p": 0.02,
+      "mean_S": {
+        "1": 0.9999993679431036,
+        "2": 0.9999885634220224,
+        "5": 0.9999471942335493,
+        "10": 0.9998747901311328,
+        "20": 0.9997162360532368,
+        "50": 0.9992662202009743,
+        "100": 0.9985103364682448,
+        "200": 0.9969982641072421,
+        "500": 0.9924496901843243
+      },
+      "hazard_per_pipe_from_SK": 1.5157800511755859e-05,
+      "implied_mean_pipes_if_constant_hazard": 65972.63232382793,
+      "upper_bound_E_pipes_up_to_K": 498.9037599013312
+    },
+    {
+      "gap": "gap100_100",
+      "p": 0.05,
+      "mean_S": {
+        "1": 0.9999753770577492,
+        "2": 0.9997895191728139,
+        "5": 0.9990789209802962,
+        "10": 0.9978207656927454,
+        "20": 0.9951520403088301,
+        "50": 0.9875262476662565,
+        "100": 0.975161505065443,
+        "200": 0.9503811118241051,
+        "500": 0.8795662664377228
+      },
+      "hazard_per_pipe_from_SK": 0.0002566198116273899,
+      "implied_mean_pipes_if_constant_hazard": 3896.8152679185687,
+      "upper_bound_E_pipes_up_to_K": 481.8343038427587
+    },
+    {
+      "gap": "gap100_100",
+      "p": 0.1,
+      "mean_S": {
+        "1": 0.99960972675235,
+        "2": 0.9979316861507408,
+        "5": 0.9915786058898398,
+        "10": 0.9806428165723096,
+        "20": 0.9582736497583074,
+        "50": 0.896088352650122,
+        "100": 0.8028235552438578,
+        "200": 0.64143845537694,
+        "500": 0.3269863043424973
+      },
+      "hazard_per_pipe_from_SK": 0.002233176725697894,
+      "implied_mean_pipes_if_constant_hazard": 447.7925945101762,
+      "upper_bound_E_pipes_up_to_K": 366.0242452430999
+    },
+    {
+      "gap": "gap100_100",
+      "p": 0.25,
+      "mean_S": {
+        "1": 0.985419135196081,
+        "2": 0.9538379803652068,
+        "5": 0.8491115504579747,
+        "10": 0.702263437088902,
+        "20": 0.47560623195780655,
+        "50": 0.15037950635421835,
+        "100": 0.02238984522929115,
+        "200": 0.0004751571586766889,
+        "500": 4.578498380516518e-09
+      },
+      "hazard_per_pipe_from_SK": 0.03767571402683767,
+      "implied_mean_pipes_if_constant_hazard": 26.542297228598418,
+      "upper_bound_E_pipes_up_to_K": 40.283819146447826
+    }
+  ]
+}
