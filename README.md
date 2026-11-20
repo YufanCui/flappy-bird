@@ -18,10 +18,10 @@ The metric is the number of pipes **fully** cleared, averaged over 20 fixed eval
 | **E1: random opening** (5 seeds per group) | Training on random openings is better in the random environment (14.2 vs. 10.3 pipes) but worse in the original game (23.0 vs. 48.5): a trade-off between specialization and robustness. |
 | **E2: random horizontal spacing added** | No benefit at this training budget (6–7 pipes in the doubly random environment). The real game's spacing is fixed, so later experiments drop it. |
 | **Improving the agent** (random opening) | 11.5 → 16.4 (1M steps) → 22.7 (stack 4 frames) → 49.9 (linear learning-rate decay) → **92.1** (LR decay + 3M steps). The LR-decay effect replicated on new seeds (71.9 vs. 16.3). Curriculum learning, an entropy bonus, a larger network, and longer training with a constant LR did not help. |
-| **Original game** (40,000-step evaluation cap) | The best agents average **700–770 pipes**; about half of the episodes reach the cap (~1,061 pipes). |
+| **Original game** (40,000-step evaluation cap) | The best 3M-step agents average **700–770 pipes** (over 1,000 with 10M steps, see Round 5); about half of the episodes reach the cap (~1,061 pipes). |
 | **Random opening + 5% sticky actions** | All agents drop to about **20 pipes**. Training with the noise (20.1 vs. 18.6) and a modified reward (20.0) barely help. |
 | **Exact upper bound** (dynamic programming) | With 5% sticky actions, an optimal policy that knows all future pipes could clear on average about **425 of the first 500 pipes** (57% chance of clearing all 500). The gap to PPO (~20) shows that the bottleneck is the agent, not the environment. |
-| Round 5 (in progress) | Testing whether adding the previously executed action to the observation, or training for 10M steps, closes the gap. |
+| **Round 5: closing the gap** | Adding the previously executed action to the observation (20.3) or training for 10M steps (21.1) does **not** help under 5% sticky actions. 10M-step agents are much stronger without noise: **1,007 pipes** in the original game (88% of episodes reach the cap) and 173 in the random-opening game. The agents become more precise, not more robust. |
 
 Detailed records for each experiment are in the `README_结果.md` / `README_E*_结果.md` file of its results folder. Each record states what was changed, what randomness was added, the results, and whether the change helped. The design of every round was written down in `PLAN.md` **before** training.
 
