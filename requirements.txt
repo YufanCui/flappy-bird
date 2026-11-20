@@ -1,0 +1,12 @@
+# Recorded working versions; clean installation on another machine has not been verified.
+# The frozen flappy_bird_gymnasium package is supplied in project/vendor and must remain the imported environment.
+gymnasium==1.2.3
+stable-baselines3==2.8.0
+torch==2.12.0
+numpy==2.4.6
+pygame==2.6.1
+matplotlib==3.10.9
+pillow==12.2.0
+cloudpickle==3.1.2
+pandas==3.0.3
+setuptools==81.0.0
